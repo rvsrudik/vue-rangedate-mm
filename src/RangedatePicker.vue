@@ -1,6 +1,10 @@
 <template>
   <div class="calendar-root">
     <div class="input-date" @click="toggleCalendar()"> {{getDateString(dateRange.start)}} - {{getDateString(dateRange.end)}}</div>
+
+    <div class="filters-bg" v-if="isOpen" @click="toggleCalendar()"></div>
+
+
     <div class="calendar" :class="{'calendar-mobile ': isCompact, 'calendar-right-to-left': isRighttoLeft}" v-if="isOpen">
       <div class="calendar-head" v-if="!isCompact">
         <h2>{{captions.title}}</h2>
@@ -255,5 +259,15 @@ li.calendar_days_in-range {
   border: none;
   padding: 5px;
   font-size: 14px;
+}
+
+.filters-bg {
+  /*background: #f77b00c2;*/
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 3;
 }
 </style>

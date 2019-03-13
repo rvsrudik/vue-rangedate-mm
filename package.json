@@ -8,8 +8,8 @@
   "_requested": {
     "type": "range",
     "registry": true,
-    "raw": "vue-rangedate-picker@^0.3.4",
-    "name": "vue-rangedate-picker",
+    "raw": "vue-rangedate-mm@^0.3.4",
+    "name": "vue-rangedate-mm",
     "escapedName": "vue-rangedate-picker",
     "rawSpec": "^0.3.4",
     "saveSpec": null,
@@ -106,10 +106,10 @@
   "license": "MIT",
   "main": "src/index.js",
   "module": "src/index.js",
-  "name": "vue-rangedate-picker",
+  "name": "vue-rangedate-mm",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bliblidotcom/vue-rangedate-picker.git"
+    "url": "git+https://github.com/rvsrudik/vue-rangedate-mm.git"
   },
   "scripts": {
     "build": "rm -rf dist/*.js* && webpack --config config/webpack.prod.conf.js",
