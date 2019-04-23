@@ -19,7 +19,7 @@ const presetRangeLabel = {
     today: 'Today',
     thisMonth: 'This Month',
     lastMonth: 'Last Month',
-    lastSevenSays: 'Last 7 Days',
+    lastSevenDays: 'Last 7 Days',
     lastThirtyDays: 'Last 30 Days'
   },
   ID: {
@@ -291,7 +291,7 @@ export default {
     selectFirstItem (r, i) {
       const result = this.getDayIndexInMonth(r, i, this.startMonthDay)
       this.dateRange = Object.assign({}, this.dateRange, this.getNewDateRange(result, this.activeMonthStart,
-      this.activeYearStart))
+          this.activeYearStart))
       if (this.dateRange.start && this.dateRange.end) {
         this.presetActive = ''
         if (this.isCompact) {
@@ -302,7 +302,7 @@ export default {
     selectSecondItem (r, i) {
       const result = this.getDayIndexInMonth(r, i, this.startNextMonthDay)
       this.dateRange = Object.assign({}, this.dateRange, this.getNewDateRange(result, this.startNextActiveMonth,
-      this.activeYearEnd))
+          this.activeYearEnd))
       if (this.dateRange.start && this.dateRange.end) {
         this.presetActive = ''
       }
@@ -318,7 +318,7 @@ export default {
         currDate = new Date(Date.UTC(this.activeYearEnd, this.startNextActiveMonth, result))
       }
       return (this.dateRange.start && this.dateRange.start.getTime() === currDate.getTime()) ||
-        (this.dateRange.end && this.dateRange.end.getTime() === currDate.getTime())
+          (this.dateRange.end && this.dateRange.end.getTime() === currDate.getTime())
     },
     isDateInRange (r, i, key, startMonthDay, endMonthDate) {
       const result = this.getDayIndexInMonth(r, i, startMonthDay)
@@ -331,7 +331,7 @@ export default {
         currDate = new Date(Date.UTC(this.activeYearEnd, this.startNextActiveMonth, result))
       }
       return (this.dateRange.start && this.dateRange.start.getTime() < currDate.getTime()) &&
-        (this.dateRange.end && this.dateRange.end.getTime() > currDate.getTime())
+          (this.dateRange.end && this.dateRange.end.getTime() > currDate.getTime())
     },
     isDateDisabled (r, i, startMonthDay, endMonthDate) {
       const result = this.getDayIndexInMonth(r, i, startMonthDay)
