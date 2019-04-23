@@ -1,9 +1,6 @@
 <template>
   <div class="calendar-root">
 
-    <span v-if="getDateString(dateRange.start)" @click="toggleCalendar()" class="mobile-range"><i class="material-icons">date_range</i>
-    <div class="red-notification" style="position: absolute; top: 0px"></div>
-    </span>
 
     <div class="input-date"  @click="toggleCalendar()"> {{getDateString(dateRange.start)}} - {{getDateString(dateRange.end)}}</div>
 
@@ -60,6 +57,8 @@
             {{item.label}}
           </li>
           <li><button class="calendar-btn-apply" @click="setDateValue()">{{captions.ok_button}}</button></li>
+
+          <li class="d-md-none"><button class="btn-sm btn-secondary calendar-btn-cancel" @click="clearDateValue()">Clear</button></li>
         </ul>
       </div>
     </div>
@@ -78,6 +77,13 @@
     cursor: pointer;
   }
 
+  .calendar-btn-cancel {
+    position: fixed;
+    bottom: 19px;
+    left: 20px;
+    width: 90px;
+    font-size: 13px;
+  }
   .input-date::after {
     content: "▼";
     float: right;

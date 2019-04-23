@@ -363,6 +363,12 @@ export default {
       if (!this.isCompact) {
         this.toggleCalendar()
       }
+    },
+    clearDateValue: function () {
+      this.$emit('clear')
+      if (!this.isCompact) {
+        this.toggleCalendar()
+      }
     }
   }
 }
