@@ -11,7 +11,7 @@
 ## Installation
 
 ```bash
-npm install --save vue-rangedate-picker
+npm install --save vue-rangedate-picker-mm
 ```
 
 ## Usage
