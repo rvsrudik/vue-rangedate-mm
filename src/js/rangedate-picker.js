@@ -16,13 +16,6 @@ const availableShortDays = {
 
 
 const presetRangeLabel = {
-  // EN: {
-  //   today: 'Today',
-  //   thisMonth: 'This Month',
-  //   lastMonth: 'Last Month',
-  //   lastSevenDays: 'Last 7 Days',
-  //   lastThirtyDays: 'Last 30 Days'
-  // },
   EN: {
     today: 'Today',
     thisWeek: 'This Week',
@@ -57,13 +50,13 @@ const defaultStyle = {
   dateDisabled: 'calendar_days--disabled'
 }
 
-const defaultPresets = function (i18n = defaultI18n) {
+const defaultPresets = function (vm, i18n = defaultI18n) {
   return {
     today: function () {
       const n = new Date()
       const today = new Date(Date.UTC(n.getFullYear(), n.getMonth(), n.getDate(), 0, 0))
       return {
-        label: presetRangeLabel[i18n].today,
+        label: vm.presetRanges.today,
         active: false,
         dateRange: {
           start: today,
@@ -85,7 +78,7 @@ const defaultPresets = function (i18n = defaultI18n) {
       const end = new Date(Date.UTC(n.getFullYear(), n.getMonth(), n.getDate() - 2 + 6))
 
       return {
-        label: presetRangeLabel[i18n].thisWeek,
+        label: vm.presetRanges.thisWeek,
         active: false,
         dateRange: {
           start: start,
@@ -99,7 +92,7 @@ const defaultPresets = function (i18n = defaultI18n) {
       const startMonth = new Date(Date.UTC(n.getFullYear(), n.getMonth(), 1))
       const endMonth = new Date(Date.UTC(n.getFullYear(), n.getMonth() + 1, 0))
       return {
-        label: presetRangeLabel[i18n].thisMonth,
+        label: vm.presetRanges.thisMonth,
         active: false,
         dateRange: {
           start: startMonth,
@@ -112,7 +105,7 @@ const defaultPresets = function (i18n = defaultI18n) {
       const startMonth = new Date(Date.UTC(n.getFullYear(), n.getMonth() - 1, 1))
       const endMonth = new Date(Date.UTC(n.getFullYear(), n.getMonth(), 0))
       return {
-        label: presetRangeLabel[i18n].lastMonth,
+        label: vm.presetRanges.lastMonth,
         active: false,
         dateRange: {
           start: startMonth,
@@ -125,7 +118,7 @@ const defaultPresets = function (i18n = defaultI18n) {
       const startMonth = new Date(Date.UTC(n.getFullYear(), n.getMonth() - 3, n.getDate()))
       const endMonth = new Date(Date.UTC(n.getFullYear(), n.getMonth(), n.getDate()))
       return {
-        label: presetRangeLabel[i18n].last3Month,
+        label: vm.presetRanges.last3Month,
         active: true,
         dateRange: {
           start: startMonth,
@@ -208,7 +201,15 @@ export default {
     },
     presetRanges: {
       type: Object,
-      default: () => null
+      default: () => {
+        return {
+          today: 'Today',
+          thisWeek: 'This Week',
+          thisMonth: 'This Month',
+          lastMonth: 'Previos Month',
+          last3Month: 'Previos 3 Month',
+        }
+      }
     },
     compact: {
       type: String,
@@ -275,7 +276,7 @@ export default {
     },
     finalPresetRanges: function () {
       const tmp = {}
-      const presets = this.presetRanges || defaultPresets(this.i18n)
+      const presets =  defaultPresets(this, this.i18n)
       for (const i in presets) {
         const item = presets[i]
         let plainItem = item

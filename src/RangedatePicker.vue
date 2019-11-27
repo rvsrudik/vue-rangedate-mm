@@ -1,7 +1,6 @@
 <template>
   <div class="calendar-root">
     
-    
     <div class="input-date" @click="toggleCalendar()"> {{getDateString(dateRange.start, 'DD.M.YYYY')}}
      <span v-if="!(Object.entries(dateRange).length === 0 && dateRange.constructor === Object)">  <i class="right-to inside-input"></i>  </span>
      <span class="c-input-placeholder" v-else > Select Range </span>
@@ -9,7 +8,6 @@
     </div>
     
         <div class="filters-bg" v-if="isOpen" @click="toggleCalendar()"></div>
-    
     
         <div class="calendar" :class="{'calendar-mobile ': isCompact, 'calendar-right-to-left': isRighttoLeft}" v-if="isOpen">
       <!--      <div class="calendar-head" v-if="!isCompact">-->
@@ -29,7 +27,7 @@
             <label class="checkbox__label" :for="item.label">{{item.label}}</label>
           </li>
           <li class="calendar_preset-ranges active-preset">
-            Date from-to <i class="right-to"></i>
+            {{captions.date_from_to || 'Date from-to'}} <i class="right-to"></i>
           </li>
           
 <!--          <li class="d-md-none">-->
@@ -78,8 +76,8 @@
  
   
         <div class="calendar-buttons">
-          <button class="calendar-btn-apply" @click="setDateValue()">Apply</button>
-          <button class="btn-sm btn-secondary calendar-btn-cancel" @click="clearDateValue()">Clear All</button>
+          <button class="calendar-btn-apply" @click="setDateValue()">{{captions.apply || 'Apply'}}</button>
+          <button class="btn-sm btn-secondary calendar-btn-cancel" @click="clearDateValue()">{{captions.cancel || 'Cancel'}}</button>
         </div>
 
       </div>
@@ -315,7 +313,7 @@
   }
   
   .calendar_preset li.calendar_preset-ranges {
-    padding: 0 30px 0 10px;
+    padding: 0 10px 0 10px;
     margin-bottom: 5px;
     cursor: pointer;
     margin-top: 1px;
